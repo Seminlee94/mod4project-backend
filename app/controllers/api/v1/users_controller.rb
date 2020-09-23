@@ -14,12 +14,25 @@ class Api::V1::UsersController < ApplicationController
           render json: { error: 'failed to create user' }, status: :not_acceptable
         end
     end
-     
-      
-    private
-     
-    def user_params
-    params.require(:user).permit(:username, :password, :bio, :avatar)
+
+    def update
+        user = User.find(params[:id])
+        user.update(user_params)
+        render json: user
     end
+    
+    def delete
+        user = User.find(params[:id])
+        user.destroy
+        render json: {}
+    end
+    
+    private
+    
+    def user_params
+        params.require(:user).permit(:name, :address, :username, :password)
+    end
+     
+    
 
 end
