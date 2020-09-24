@@ -51,3 +51,5 @@ gem "httparty"
 gem "dotenv"
 
 gem "rest-client"
+
+gem "pry"
