@@ -13,7 +13,7 @@
 # require "httparty"
 # Dotenv.load
 
-Item.destroy_all
+# Item.destroy_all
 
 
 # @@key = ENV["WEGMAN_API_KEY"]
@@ -98,4 +98,8 @@ Item.destroy_all
 
 
 
-Item.item_by_category("561-562") ## ""Bread, Packaged"
+# Item.item_by_category("561-562") ## ""Bread, Packaged"
+
+5.times do
+    FavoriteRecipe.create(user_id: User.first.id, name: Faker::Commerce.product_name)
+end
