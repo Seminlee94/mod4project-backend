@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follows
   resources :favorite_recipes
   resources :carts
   resources :fridges
