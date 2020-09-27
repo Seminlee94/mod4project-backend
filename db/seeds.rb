@@ -6,100 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# require 'pry'
-# require 'json'
-# require "dotenv"
-# require "rest-client"
-# require "httparty"
-# Dotenv.load
+# User.create(username: "example1", password_digest: "example1", name: "example1", address: "example1")
+# User.create(username: "example2", password_digest: "example2", name: "example2", address: "example2")
+# User.create(username: "example3", password_digest: "example3", name: "example3", address: "example3")
+# User.create(username: "example4", password_digest: "example4", name: "example4", address: "example4")
+# User.create(username: "example5", password_digest: "example5", name: "example5", address: "example5")
+# User.create(username: "example6", password_digest: "example6", name: "example6", address: "example6")
+
 
 # Item.destroy_all
 
-
-# @@key = ENV["WEGMAN_API_KEY"]
-
-# def self.sub_category(id)
-#     response = HTTParty.get("https://api.wegmans.io/products/categories/#{id}?api-version=2018-10-18&subscription-key=#{@@key}") #{|response, request, result| response }
-#     result = JSON.parse(response.body)
-#     result["categories"].each do |sub_category|
-        
-#         puts "#{sub_category["id"]} - #{sub_category["name"]}"
-        
-#         Item.item_by_category(sub_category["id"])
-#     end 
-# end
-
-
-# def self.item_by_category(sub_id)
-#     response = HTTParty.get("https://api.wegmans.io/products/categories/#{sub_id}?api-version=2018-10-18&subscription-key=#{@@key}")#{|response, request, result| response }
-#     result = JSON.parse(response.body)
-#     if result["products"].count == 0 
-#         puts "no"
-#     else
-#         return result["products"][0..9].each do |product|
-            
-#             puts product
-#             puts product["sku"]
-            
-#             Item.info(product["sku"])
-#         end
-#     end
-# end
-
-# def self.info(sku)
-#     # binding.pry
-#     response = HTTParty.get("https://api.wegmans.io/products/#{sku}?api-version=2018-10-18&subscription-key=#{@@key}")
-#     result = JSON.parse(response.body)
-#     response_price = HTTParty.get("https://api.wegmans.io/products/#{sku}/prices?api-version=2018-10-18&subscription-key=#{@@key}")
-#     result_price = JSON.parse(response_price.body)
-#     price = result_price["stores"][0]["price"]
-#     name = result["name"]
-#     if result["tradeIdentifiers"] == [] || result["tradeIdentifiers"][0]["images"] == []
-#         result["tradeIdentifiers"] = "https://assets.materialup.com/uploads/b03b23aa-aa69-4657-aa5e-fa5fef2c76e8/preview.png"
-#     else result["tradeIdentifiers"][0]["images"][0]
-#         result["tradeIdentifiers"] = result["tradeIdentifiers"][0]["images"][0]
-#     end
-
-#     if result["descriptions"]["consumer"] 
-#         result["descriptions"]["consumer"]
-#     else
-#         result["descriptions"]["consumer"] = name
-#     end
-    
-#     if result["descriptions"]["receipt"] 
-#         result["descriptions"]["receipt"]
-#     else
-#         result["descriptions"]["receipt"] = name
-#     end
-        
-#     # binding.pry
-#     item = Item.create!(
-#         # item_id: sku, #sku number - product_url
-#         category: "Seafood",
-#         sub_category: "Ready to Cook Seafood",
-#         name: name, #product_url
-#         price: price, #price_url
-#         description: result["descriptions"]["consumer"],
-#         inventory_quantity: rand(50..100),
-#         image: result["tradeIdentifiers"]
-
-#     )
-# end
-
-# def self.search(query)
-#     search_query = query.split(" ").join("%20")
-#     response = HTTParty.get("https://api.wegmans.io/products/search?query=#{search_query}&api-version=2018-10-18&subscription-key=#{@@key}")
-#     # binding.pry
-#     response["results"][0...6].map do |item|
-#         sku = item["sku"]
-#         Item.info(sku)
-#     end
-# end
-
-
-
 # Item.item_by_category("561-562") ## ""Bread, Packaged"
+# Item.item_by_category("561-563") ## ""Stuffing, Pitas, Flatbreads, Wraps & Pizza Shells""
+# Item.item_by_category("917-920") ## "Cave-Ripened Cheese"
+# Item.item_by_category("917-921") ## "Feta Cheese"
+# Item.item_by_category("6940-716")  # Beef
+# Item.item_by_category("6940-717")  # Pork
+# Item.item_by_category("7221-851")  # Crab and Lobster
+# Item.item_by_category("7221-853")  # Frozen Shrimp & Seafood
 
-5.times do
-    FavoriteRecipe.create(user_id: User.first.id, name: Faker::Commerce.product_name)
-end
+# 5.times do
+#     FavoriteRecipe.create(user_id: User.first.id, name: Faker::Commerce.product_name)
+# end
+
+# Fridge.create(user_id: User.first.id)
+
+# 20.times do
+#     FridgeItem.create(item_id: Item.all.sample.id, fridge_id: Fridge.first.id)
+# end

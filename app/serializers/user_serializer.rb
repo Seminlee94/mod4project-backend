@@ -1,5 +1,5 @@
-class UserSerializer < ActiveModel::Serializer
-  attributes :username, :name, :address
+class UserSerializer
+  # attributes :username, :name, :address
 
   def initialize(user_object)
     @user = user_object

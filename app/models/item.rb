@@ -32,7 +32,7 @@ class Item < ApplicationRecord
         if result["products"].count == 0 
             puts "no"
         else
-            return result["products"][0..9].each do |product|
+            return result["products"][0..15].each do |product|
                 
                 puts product
                 puts product["sku"]
@@ -72,7 +72,7 @@ class Item < ApplicationRecord
         item = Item.create!(
             # item_id: sku, #sku number - product_url
             category: "Seafood",
-            sub_category: "Ready to Cook Seafood",
+            sub_category: "Frozen Shrimp & Seafood",
             name: name, #product_url
             price: price, #price_url
             description: result["descriptions"]["consumer"],
