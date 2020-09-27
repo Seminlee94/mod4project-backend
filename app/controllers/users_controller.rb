@@ -3,13 +3,22 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-
-        render json: users, except: [:created_at, :updated_at]
+        render json: UserSerializer.new(users).to_serialized_json
     end
     
     def show
         user = User.find(params[:id])
-        render json: user, except: [:created_at, :updated_at]
+        render json: UserSerializer.new(user).to_serialized_json
+    end
+
+    def followers
+        followers = User.find(params[:id]).followed_by
+        render json: followers
+    end
+
+    def followees
+        followees = User.find(params[:id]).following
+        render json: followees
     end
 
 
