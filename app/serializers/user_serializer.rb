@@ -1,5 +1,5 @@
-class UserSerializer
-  # attributes :username, :name, :address
+class UserSerializer < ActiveModel::Serializer
+  attributes :username, :name, :address
 
   def initialize(user_object)
     @user = user_object
@@ -8,10 +8,6 @@ class UserSerializer
   def to_serialized_json
     @user.to_json(
       :include => {
-        :cart => { :include => { 
-            :items => {:only => [:item_id, :name, :sales_price]}
-          }
-        },
         :follower_follows => { 
           :include => [:follower]
         },
@@ -20,4 +16,5 @@ class UserSerializer
         }
     }, :except => [:password])
   end
+
 end

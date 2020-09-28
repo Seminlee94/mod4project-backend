@@ -11,6 +11,9 @@ class CartItemSerializer < ActiveModel::Serializer
         :include => {
             :item => {
                 :except => [:created_at, :updated_at]
+            },
+            :cart => {
+              :include => [:user_cart]
             }
         }
     )
