@@ -34,3 +34,7 @@
 # 20.times do
 #     FridgeItem.create(item_id: Item.all.sample.id, fridge_id: Fridge.first.id)
 # end
+
+# 5.times do
+#     CartItem.create(item_id: Item.all.sample.id, cart_id: Cart.first.id)
+# end
