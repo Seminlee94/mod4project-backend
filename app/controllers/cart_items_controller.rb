@@ -11,8 +11,9 @@ class CartItemsController < ApplicationController
     end
     
     def create
+        # byebug
         cart_item = CartItem.create(cart_item_params)
-        render json: cart_item
+        render json: CartItemSerializer.new(cart_item).to_serialized_json
     end
 
     def update
@@ -31,7 +32,7 @@ class CartItemsController < ApplicationController
     private
     
     def cart_item_params
-        params.require(:cart_item).permit(:cart_id, :item_id, :quantity)
+        params.require(:cart_item).permit(:cart_id, :item_id)
     end
     
 

@@ -12,7 +12,11 @@ class UserCartSerializer < ActiveModel::Serializer
               :except => [:created_at, :updated_at]
             },
             :cart => {
-              :include => [:cart_item]
+              :include => {
+                :cart_item => {
+                  :include => [:item]
+                }
+              }
             }
         }
     )
