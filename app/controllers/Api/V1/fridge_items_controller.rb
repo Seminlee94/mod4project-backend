@@ -1,4 +1,4 @@
-class FridgeItemsController < ApplicationController
+class Api::V1::FridgeItemsController < ApplicationController
 
     def index
         fridge_items = FridgeItem.all
