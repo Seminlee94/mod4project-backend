@@ -1,4 +1,4 @@
-class FavoriteRecipesController < ApplicationController
+class Api::V1::FavoriteRecipesController < ApplicationController
 
     def index
         favorite_recipes = FavoriteRecipe.all

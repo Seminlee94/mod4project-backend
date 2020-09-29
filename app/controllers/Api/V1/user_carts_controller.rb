@@ -1,4 +1,4 @@
-class UserCartsController < ApplicationController
+class Api::V1::UserCartsController < ApplicationController
 
 
     def index

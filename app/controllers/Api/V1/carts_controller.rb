@@ -1,4 +1,4 @@
-class CartsController < ApplicationController
+class Api::V1::CartsController < ApplicationController
 
     def index
         carts = Cart.all
