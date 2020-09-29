@@ -1,3 +1,4 @@
+# require byebug
 class Api::V1::UsersController < ApplicationController
     # skip_before_action :authorized, only: [:create]
 
@@ -38,8 +39,9 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def follow
+        # byebug
         follow = Follow.create(follow_params)
-        user = User.find(follow_params[:followee_user_id])
+        user = User.find(follow_params[:followee_id])
         if follow.valid?
           render json: { user: UserSerializer.new(user)}, status: :accepted
         else
@@ -48,8 +50,8 @@ class Api::V1::UsersController < ApplicationController
     end
     
     def unfollow
-        follow = Follow.find_by(follower_id: follow_params[:follower_id], followee_user_id: follow_params[:followee_user_id])
-        user = User.find(follow_params[:followee_user_id])
+        follow = Follow.find_by(follower_id: follow_params[:follower_id], followee_id: follow_params[:followee_id])
+        user = User.find(follow_params[:followee_id])
         follow.destroy 
         if !follow.save
             render json: { user: UserSerializer.new(user) }, status: :accepted
