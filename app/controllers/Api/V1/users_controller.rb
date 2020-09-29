@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    # skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create]
 
     def index
         users = User.all
@@ -47,6 +47,10 @@ class Api::V1::UsersController < ApplicationController
     
     def user_params
         params.require(:user).permit(:name, :address, :username, :password)
+    end
+
+    def follow_params
+        params.require(:follow).permit(:follower_id, :followee_id )
     end
      
     
