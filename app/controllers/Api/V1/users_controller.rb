@@ -1,21 +1,23 @@
-# require byebug
+# require "byebug"
 class Api::V1::UsersController < ApplicationController
     # skip_before_action :authorized, only: [:create]
 
     def profile
+        # byebug
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
 
+
     def index
         users = User.all
-        # render json: users
-        render json: UserSerializer.new(users).to_serialized_json
+        render json: users
+        # render json: UserSerializer.new(users).to_serialized_json
     end
 
     def show
         user = User.find(params[:id])
-        # render json: user
-        render json: UserSerializer.new(user).to_serialized_json
+        render json: user
+        # render json: UserSerializer.new(user).to_serialized_json
     end
 
     def followers
@@ -38,17 +40,17 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
+    
     def follow
-        # byebug
-        follow = Follow.create(follow_params)
+        follow = Follow.create_or_find_by!(follow_params)
         user = User.find(follow_params[:followee_id])
         if follow.valid?
-          render json: { user: UserSerializer.new(user)}, status: :accepted
+            render json: { user: UserSerializer.new(user)}, status: :accepted
         else
-          render json: { error: "failed to follow user" }, status: :not_acceptable
+            render json: { error: "failed to follow user" }, status: :not_acceptable
         end
     end
-    
+
     def unfollow
         follow = Follow.find_by(follower_id: follow_params[:follower_id], followee_id: follow_params[:followee_id])
         user = User.find(follow_params[:followee_id])

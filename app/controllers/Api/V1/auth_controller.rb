@@ -1,4 +1,4 @@
-require 'byebug'
+# require 'byebug'
 
 class Api::V1::AuthController < ApplicationController
     # skip_before_action :authorized, only: [:create]
@@ -19,4 +19,4 @@ class Api::V1::AuthController < ApplicationController
     def user_login_params
       params.require(:user).permit(:username, :password)
     end
-  end
+end

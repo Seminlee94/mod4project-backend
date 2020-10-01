@@ -7,7 +7,8 @@ Rails.application.routes.draw do
       #   end
       resources :users do
         post '/follow', to: 'users#follow'
-        post '/unfollow', to: 'users#unfollow'
+        # get '/unfollow', to: 'users#unfollow'
+        delete '/unfollow', to: 'users#unfollow'
         get '/followers', to: 'users#followers'
         get '/followees', to: 'users#followees'
       end

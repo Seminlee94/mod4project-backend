@@ -13,7 +13,7 @@ class Api::V1::UserCartsController < ApplicationController
     
     def create
         user_cart = UserCart.create(user_cart_params)
-        render json: user_cart
+        render json: UserCartSerializer.new(user_cart).to_serialized_json
     end
 
     def update
