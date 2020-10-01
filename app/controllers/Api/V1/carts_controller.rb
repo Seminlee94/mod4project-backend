@@ -2,8 +2,8 @@ class Api::V1::CartsController < ApplicationController
 
     def index
         carts = Cart.all
-
-        render json: CartSerializer.new(carts).to_serialized_json
+        render json: carts
+        # render json: CartSerializer.new(carts).to_serialized_json
     end
 
     def show
@@ -15,6 +15,12 @@ class Api::V1::CartsController < ApplicationController
         cart = Cart.create(cart_params)
         render json: cart
     end
+
+    def username
+        cart= Cart.find(params[:cart_id])
+        render json: {username: CartSerializer.new(cart).username }, status: :accepted 
+    end
+
     
     def update
         cart = Cart.find(params[:id])
@@ -31,7 +37,7 @@ class Api::V1::CartsController < ApplicationController
     private
     
     def cart_params
-        params.require(:cart).permit()
+        params.require(:cart).permit(:username)
     end
 
     
