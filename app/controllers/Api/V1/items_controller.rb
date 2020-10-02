@@ -12,7 +12,7 @@ class Api::V1::ItemsController < ApplicationController
     end
 
     def create
-        item = Item.search(params[:name])
+        item = Item.create(item_params)
         render json: item, except: [:created_at, :updated_at]
     end
     
