@@ -12,7 +12,7 @@ class Api::V1::FridgeItemsController < ApplicationController
     
     def create
         fridge_item = FridgeItem.create(fridge_item_params)
-        render json: fridge_item
+        render json: FridgeItemSerializer.new(fridge_item).to_serialized_json
     end
 
     def update
@@ -31,7 +31,7 @@ class Api::V1::FridgeItemsController < ApplicationController
     private
     
     def fridge_item_params
-        params.require(:fridge_item).permit(:fridge_id, :item_id, :quantity)
+        params.require(:fridge_item).permit(:fridge_id, :item_id)
     end
     
 end

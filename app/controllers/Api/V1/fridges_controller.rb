@@ -2,13 +2,18 @@ class Api::V1::FridgesController < ApplicationController
 
     def index
         fridges = Fridge.all
-
-        render json: FridgeSerializer.new(fridges).to_serialized_json
+        render json: fridges
+        # render json: FridgeSerializer.new(fridges).to_serialized_json
     end
 
     def show
         fridge = Fridge.find(params[:id])
         render json: FridgeSerializer.new(fridge).to_serialized_json
+    end
+
+    def create
+        fridge = Fridge.create(fridge_params)
+        render json: fridge
     end
     
     def update
