@@ -32,7 +32,7 @@ This project is an extension of Mod 1 & Mod 3 projects of grocery E-commerce. Mo
 - ```rails db:migrate```
 - ```rails db:seed``` after uncommenting lines 19~26, and change the category & sub_category in item.rb lines 74 & 75 to the approriate categories.
 - ```https://github.com/Seminlee94/mod4project-react``` Clone this front end repository
-- npm install or yarn install.
+- ```npm install``` or ```yarn install```.
 
 ## Into the app
 For full user experience demo, please check out our front end repository. 
@@ -49,7 +49,7 @@ For full user experience demo, please check out our front end repository.
 ### Kevin Xie
 
 # Demo
-- Comin Soon!
+- Coming Soon!
 
 ### Please check out Se Min Lee's previous demos and projects.
 #### Demo
