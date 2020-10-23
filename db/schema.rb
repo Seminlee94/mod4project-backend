@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_182617) do
     t.string "username"
   end
 
-  create_table "favorite_recipes", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "follows", force: :cascade do |t|
     t.bigint "follower_id"
     t.bigint "followee_id"
